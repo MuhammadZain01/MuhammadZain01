@@ -1,0 +1,40 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+class ReverseList:                 
+    def __init__(self):
+        self.head = None
+    def reverse(self):
+        temp = None
+        current = self.head
+        while current is not None:
+            temp = current.prev
+            current.prev = current.next
+            current.next = temp
+            current = current.prev
+        if temp is not None:
+            self.head = temp.prev
+    def push(self, new_data):
+        new_node = Node(new_data)
+        new_node.next = self.head
+        if self.head is not None:
+            self.head.prev = new_node
+        self.head = new_node
+    def printList(self, node):
+        while(node is not None):
+            print (node.data)
+            node = node.next
+Rl = ReverseList()
+Rl.push(1)
+Rl.push(2)
+Rl.push(3)
+Rl.push(4)
+Rl.push(5)
+Rl.reverse()
+print ("Origional Linked List is=")
+Rl.printList(Rl.head)
+Rl.reverse()
+print ("Reversed Linked List is=")
+Rl.printList(Rl.head)
