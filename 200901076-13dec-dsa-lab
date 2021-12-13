@@ -1,0 +1,11 @@
+class sorted:
+    def _init_(self,array):
+        def sort():
+            for i in range(len(arr)):
+                print("\n Outer loop,i")
+                for j in range(len(arr)-1):
+                    print("\n Inner loop",j)
+                    if arr[j]>arr[j+1]:
+                        temp=arr[j]
+                        arr[j]=arr[j+1]
+                        arr[j+1]=temp
