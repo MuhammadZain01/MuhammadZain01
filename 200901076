@@ -1,0 +1,50 @@
+class Node:#tree node
+  def init (self,data):
+    self.left=None  #initially declare null on both pointers
+    self.right=None
+    self.data=data #store root
+
+# Insert Node
+  def insert(self, data):
+      if self.data: #if root exists
+         if (data<self.data): #if data to be inserted is less than root
+            if self.left is None: #if root is empty
+               self.left = Node(data) #store at root
+            else:
+               self.left.insert(data) #else recursively store at left
+         elif (data>self.data): #if data is greater
+            if self.right is None:
+               self.right = Node(data) #store at root if null
+            else:
+               self.right.insert(data) #store at right recursively
+      else:
+         self.data = data #else store at root
+   
+#binary search
+  def binarySearch(self,val): 
+     if val<self.data:
+       if self.left is None: 
+         return (val) + " Value entered is not in Binary Tree" 
+       return self.left.binarySearch(val) 
+     elif val>self.data:
+       if self.right is None: 
+         return (str(val) + " Value entered is not in Binary Tree") 
+       return self.right.binarySearch(val)
+     else:
+       print (str(self.data) + " Is found in Binary Tree")
+
+
+  def PrintTree(self):
+      if self.left: 
+         self.left.PrintTree()
+      print( self.data) 
+      if self.right: 
+         self.right.PrintTree()
+
+root = Node('abc')
+root.insert('ary')
+root.insert('efg')
+root.insert('hij')
+print(root.binarySearch('aaa'))
+print(root.binarySearch('ary'))
+root.PrintTree()
