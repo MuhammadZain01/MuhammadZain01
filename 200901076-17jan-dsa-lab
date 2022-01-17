@@ -1,0 +1,27 @@
+def quicksort(start,end,elements):
+  if start < end:
+    pos = partition(start, end, elements)
+    quicksort(start, pos - 1, elemens)
+    quicksort(pos + 1, end, elements)
+def swap(a, b, array):
+  if a != b:
+    array[a],array[b]=array[b],array[a]
+def partition(start, end, elements):
+  pivotIndex = start
+  pivot = elements[pivotIndex]
+  start = pivotIndex + 1
+  end = len(elements) - 1
+  while start<end:
+    while elements[start] <= pivot:
+      start += 1
+    while elements[end] > pivot:
+      end -= 1
+    if start < end:
+      swap(start, end, elements)
+  swap(pivotIndex, end, elements)
+  return end
+  e = [23,67,11,3,20,56]
+  print("Unsorted array:",e)
+  n = len(e)
+  quicksort(0, n-1, e)
+  print("Sorted array:",e)
